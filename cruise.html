@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html>
- 
+<head>
+    <title>
+        Cruise Page
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</head>
 <body>
-
-<h2>Getting input</h2>
-
-<form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
-</form>
-
-
-<p id="result">This text will be replaced </p>
-
-<script> 
-
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
-</script>
-
+    <h1>Bhavyasree kalava goes on a cruise</h1>
+    <form>
+        <input type="checkbox" id="shares_cabin" value="True">
+        <label for="shares_cabin">Shares Cabin</label></br>
+        <input type="checkbox" id="breakfast" value="True">
+        <label for="breakfast">Breakfast</label></br>
+        <input type="checkbox" id="pool_pass" value="False">
+        <label for="pool_pass   ">Pool Pass</label></br>
+        <input type="button" onclick="selectCruise()" value="Select a Cruise">
+    </form>
+    <p id="result" style="font-weight: bold;">The cruise details will be displayed here </p>
+    <form>
+        <label for="days">Enter the number of days </label>
+        <input type="text" id="days" name="days"> <br>
+        <label for="price">Enter price</label>
+        <input type="text" id="price" name="price"> <br>
+        <input type="button" onclick="updateCruise()" value="Update the Cruise">
+    </form>
+    <script>
+        my_cruise = {};
+        function selectCruise() {
+            my_cruise = {};
+            my_cruise.shared = document.getElementById("shares_cabin").checked;
+            my_cruise.breakfast = document.getElementById("breakfast").checked;
+            my_cruise.pool = document.getElementById("pool_pass").checked;
+            document.getElementById("result").innerHTML = JSON.stringify(my_cruise);
+        }
+        function updateCruise() {
+            let days = document.getElementById("days").value;
+            let price = document.getElementById("price").value;
+            my_cruise["days"] = days;
+            my_cruise["price"] = price;
+            document.getElementById("result").innerHTML = JSON.stringify(my_cruise);
+        }
+    </script>
 </body>
-</html> 
+</html>

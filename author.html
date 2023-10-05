@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html>
- 
+    <head>
+        <title>
+            Author Page
+        </title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" 
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    
+    </head>
 <body>
-    <h1>Author entry : Bhavyasree kalava</h1>
+    <h1 style="background-color: lightgreen; font-family: Georgia, 'Times New Roman', Times, serif; color: black;">Author entry : Bhavyasree kalava</h1>
 <h2>Getting input</h2>
 
 <form>
@@ -38,7 +49,46 @@ function checkAuthor (){
     }
     document.getElementById('good_count').innerHTML = good;
     document.getElementById('oops_count').innerHTML = oops;
+
+    if(oops > 7) {
+                         incorrectGuesses()
+    }
+    function incorrectGuesses(){
+                 alert("Sorry, ran out of guesses.");
+             }
 }
+</script>
+<div id="imageContainer">
+    <img id="displayImage" src="City1.jpg" alt="City1" width="100" height="100" onclick="selectImage()">
+</div>
+
+<!-- JavaScript -->
+<script>
+    
+    let useImage = 1;
+
+   
+    function selectImage() {
+        const imageElement = document.getElementById("displayImage");
+
+      
+        switch (useImage) {
+            case 1:
+                imageElement.src = "City1.jpg";
+                useImage = 2;
+                break;
+            case 2:
+                imageElement.src = "City2.jpg";
+                useImage = 3;
+                break;
+            case 3:
+                imageElement.src = "City3.jpg"; 
+                useImage = 1;
+                break;
+            default:
+                break;
+        }
+    }
 </script>
 
 </body>
